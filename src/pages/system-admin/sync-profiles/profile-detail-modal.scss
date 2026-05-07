@@ -1,14 +1,77 @@
 .modalContent {
   padding: 1rem 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.tabList {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.tabPanelContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.cardHeader {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #161616;
 }
 
 .formField {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.checkboxRow {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.resourceTypesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.resourceCheckbox {
+  margin: 0;
 }
 
 .testButton {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.successTile {
+  background-color: #defbe6;
+  border: 1px solid #198038;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.errorTile {
+  background-color: #ffd7d9;
+  border: 1px solid #da1e28;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
 }
 
 .testResult {
@@ -24,17 +87,6 @@
 .error {
   color: #da1e28;
   font-weight: 500;
-}
-
-.resourceTypesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.resourceCheckbox {
-  margin: 0;
 }
 
 .errorMessage {

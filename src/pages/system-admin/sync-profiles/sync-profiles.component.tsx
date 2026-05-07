@@ -40,6 +40,7 @@ import {
   toggleProfileStatus,
   triggerSync,
   exportProfiles,
+  usePatientIdentifierTypes,
 } from './sync-profiles.resources';
 import { type SyncFhirProfile } from './sync-profiles.types';
 import ProfileDetailModal from './profile-detail-modal.component';
@@ -52,6 +53,7 @@ interface SyncProfilesContentProps {
 const SyncProfilesContent: React.FC<SyncProfilesContentProps> = () => {
   const { t } = useTranslation();
   const { profiles, isLoading, isError, mutate } = useSyncProfiles();
+  const { patientIdentifierTypes } = usePatientIdentifierTypes();
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState<SyncFhirProfile | undefined>();
@@ -384,6 +386,7 @@ const SyncProfilesContent: React.FC<SyncProfilesContentProps> = () => {
         onClose={() => setIsModalOpen(false)}
         profile={selectedProfile}
         onSave={() => mutate()}
+        patientIdentifierTypes={patientIdentifierTypes}
       />
     </div>
   );

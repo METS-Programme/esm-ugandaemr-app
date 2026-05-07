@@ -2,6 +2,16 @@ import useSWR from 'swr';
 import { openmrsFetch } from '@openmrs/esm-framework';
 import { type SyncFhirProfile, type SyncProfileFormData, type SyncProfileResponse } from './sync-profiles.types';
 
+export interface PatientIdentifierType {
+  uuid: string;
+  name: string;
+  description?: string;
+}
+
+export interface PatientIdentifierTypesResponse {
+  results: PatientIdentifierType[];
+}
+
 export function useSyncProfiles() {
   const apiUrl = '/ws/rest/v1/syncfhirprofile?v=full';
   const { data, error, isLoading, mutate } = useSWR<SyncProfileResponse, Error>(
@@ -26,6 +36,27 @@ export function useSyncProfile(uuid: string) {
 
   return {
     profile: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function usePatientIdentifierTypes() {
+  const apiUrl = '/ws/rest/v1/patientidentifiertype?v=custom:(uuid,name,description)';
+  const { data, error, isLoading } = useSWR<PatientIdentifierTypesResponse | PatientIdentifierType[], Error>(
+    apiUrl,
+    async () => {
+      const res = await openmrsFetch(apiUrl);
+      const json = await res.json();
+      return json;
+    }
+  );
+
+  // Handle both response formats: { results: [] } or direct array []
+  const results = Array.isArray(data) ? data : (data?.results || []);
+
+  return {
+    patientIdentifierTypes: results,
     isLoading,
     isError: error,
   };
