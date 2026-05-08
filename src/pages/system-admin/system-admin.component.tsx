@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import {
   Connect,
   Settings,
@@ -15,6 +16,7 @@ import styles from './system-admin.scss';
 
 const SystemAdminDashboard: React.FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const navItems = [
     {
@@ -22,56 +24,56 @@ const SystemAdminDashboard: React.FC = () => {
       label: t('syncProfiles', 'Sync Profiles'),
       description: t('syncProfilesDesc', 'Configure and manage FHIR sync profiles'),
       icon: Connect,
-      path: '/system-admin/sync-profiles',
+      path: '/sync-profiles',
     },
     {
       id: 'sync-task-types',
       label: t('syncTaskTypes', 'Sync Task Types'),
       description: t('syncTaskTypesDesc', 'Manage sync task types and view execution history'),
       icon: Settings,
-      path: '/system-admin/sync-task-types',
+      path: '/sync-task-types',
     },
     {
       id: 'schedule-tasks',
       label: t('scheduleTaskManager', 'Schedule Task Manager'),
       description: t('scheduleTaskManagerDesc', 'Schedule and automate recurring tasks'),
       icon: Calendar,
-      path: '/system-admin/schedule-tasks',
+      path: '/schedule-tasks',
     },
     {
       id: 'cohort-management',
       label: t('cohortManagement', 'Cohort Management'),
       description: t('cohortManagementDesc', 'Manage DSD refill groups and patient enrollment'),
       icon: Group,
-      path: '/system-admin/cohort-management',
+      path: '/cohort-management',
     },
     {
       id: 'viral-load-upload',
       label: t('viralLoadUpload', 'Viral Load Upload'),
       description: t('viralLoadUploadDesc', 'Upload viral load test results from CPHL'),
       icon: Upload,
-      path: '/system-admin/viral-load-upload',
+      path: '/viral-load-upload',
     },
     {
       id: 'sms-settings',
       label: t('sms', 'SMS'),
       description: t('smsDesc', 'Configure SMS gateway and view sent message logs'),
       icon: Mobile,
-      path: '/system-admin/sms-settings',
+      path: '/sms-settings',
     },
     {
       id: 'system-upgrades',
       label: t('systemUpgrades', 'System Updates & Upgrades'),
       description: t('systemUpgradesDesc', 'Execute system upgrades and update EMR components'),
       icon: Renew,
-      path: '/system-admin/system-upgrades',
+      path: '/system-upgrades',
     },
     {
       id: 'about-systems',
       label: t('aboutSystems', 'About Systems'),
       description: t('aboutSystemsDesc', 'View system information, version details, and facility code'),
       icon: Information,
-      path: '/system-admin/about-systems',
+      path: '/about-systems',
     },
   ];
 
@@ -85,10 +87,10 @@ const SystemAdminDashboard: React.FC = () => {
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
-            <a
+            <button
               key={item.id}
               className={styles.dashboardCard}
-              href={item.path}
+              onClick={() => navigate(item.path)}
             >
               <div className={styles.cardIcon}>
                 <Icon size={32} />
@@ -96,7 +98,7 @@ const SystemAdminDashboard: React.FC = () => {
               <h3>{item.label}</h3>
               <p>{item.description}</p>
               <ChevronRight size={20} className={styles.cardArrow} />
-            </a>
+            </button>
           );
         })}
       </div>

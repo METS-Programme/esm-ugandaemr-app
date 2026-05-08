@@ -16,9 +16,6 @@ import {
   Save,
   Link,
   Information,
-  Checkmark,
-  Warning,
-  Time,
 } from '@carbon/react/icons';
 import {
   showNotification,
@@ -31,18 +28,9 @@ import {
   testSMSConnection,
 } from './sms-settings.resources';
 import { type SMSSettings } from './sms-settings.types';
-import Illustration from './sms-settings-illustration.component';
-import { Header } from '../shared-components';
 import styles from './sms-settings.scss';
 
-interface SMSSettingsContentProps {
-  backButton?: {
-    label: string;
-    onClick: () => void;
-  };
-}
-
-const SMSSettingsContent: React.FC<SMSSettingsContentProps> = ({ backButton }) => {
+const SMSSettingsContent: React.FC = () => {
   const { t } = useTranslation();
   const isTablet = useLayoutType() === 'tablet';
   const { smsSettings, isLoading, isError, mutate } = useSMSSettings();
@@ -133,15 +121,8 @@ const SMSSettingsContent: React.FC<SMSSettingsContentProps> = ({ backButton }) =
   }
 
   return (
-    <>
-      <Header
-        illustrationComponent={<Illustration />}
-        title={t('sms', 'SMS')}
-        backButton={backButton}
-      />
-      <div className={styles.smsSettingsContent}>
-        <div className={styles.settingsContainer}>
-        {/* Appointment Reminder Settings */}
+    <div className={styles.smsSettingsContent}>
+      <div className={styles.settingsContainer}>
         <Tile className={styles.settingsSection}>
           <div className={styles.sectionHeader}>
             <div>
@@ -213,7 +194,6 @@ const SMSSettingsContent: React.FC<SMSSettingsContentProps> = ({ backButton }) =
           </Layer>
         </Tile>
 
-        {/* SMS Server Configuration */}
         <Tile className={styles.settingsSection}>
           <div className={styles.sectionHeader}>
             <div>
@@ -295,7 +275,6 @@ const SMSSettingsContent: React.FC<SMSSettingsContentProps> = ({ backButton }) =
           </div>
         </Tile>
 
-        {/* Advanced Configuration */}
         <Tile className={styles.settingsSection}>
           <div className={styles.sectionHeader}>
             <div>
@@ -337,7 +316,6 @@ const SMSSettingsContent: React.FC<SMSSettingsContentProps> = ({ backButton }) =
           </Layer>
         </Tile>
 
-        {/* Save Actions */}
         <div className={styles.actionsBar}>
           <Button
             kind="primary"
@@ -348,9 +326,8 @@ const SMSSettingsContent: React.FC<SMSSettingsContentProps> = ({ backButton }) =
             {isSaving ? t('saving', 'Saving...') : t('saveSettings', 'Save Settings')}
           </Button>
         </div>
-        </div>
       </div>
-    </>
+    </div>
   );
 };
 
