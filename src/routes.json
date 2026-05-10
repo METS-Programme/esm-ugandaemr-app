@@ -170,6 +170,12 @@
       "order": 8
     },
     {
+      "name": "mobile-connection-link",
+      "component": "mobileConnectionLink",
+      "slot": "system-admin-left-panel-slot",
+      "order": 9
+    },
+    {
       "name": "app-search-button",
       "component": "appMenuButton",
       "slot": "top-nav-actions-slot",

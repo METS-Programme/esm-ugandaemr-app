@@ -10,6 +10,7 @@ import {
   Mobile,
   Renew,
   Information,
+  QrCode,
 } from '@carbon/react/icons';
 
 const moduleName = '@ugandaemr/esm-ugandaemr-app';
@@ -100,7 +101,17 @@ export const aboutSystemsLink = getSyncLifecycle(
   options
 );
 
+export const mobileConnectionLink = getSyncLifecycle(
+  createLeftPanelLink({
+    name: 'mobile-connection',
+    title: 'Mobile Connection',
+    icon: QrCode,
+  }),
+  options
+);
+
 export * from './sync-logs';
 export * from './sms-settings';
 export * from './viral-load-upload';
 export * from './about-systems';
+export * from './mobile-connection';

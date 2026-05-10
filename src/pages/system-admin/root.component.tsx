@@ -12,6 +12,7 @@ import ViralLoadUploadContent from './viral-load-upload/viral-load-upload.compon
 import CohortManagementContent from './cohort-management';
 import SystemUpgradesContent from './system-upgrades';
 import AboutSystemsContent from './about-systems/about-systems.component';
+import MobileConnectionContent from './mobile-connection';
 
 const Root: React.FC = () => {
   const spaBasePath = window.spaBase;
@@ -38,6 +39,7 @@ const Root: React.FC = () => {
           <Route path="/sms-settings" element={<SMSSettingsContent />} />
           <Route path="/system-upgrades" element={<SystemUpgradesContent />} />
           <Route path="/about-systems" element={<AboutSystemsContent />} />
+          <Route path="/mobile-connection" element={<MobileConnectionContent />} />
         </Routes>
       </main>
     </BrowserRouter>
