@@ -16,6 +16,7 @@ import bedManagementAppMenu from "./menu-app-items/bed-mgt-item/bed-mgt.componen
 import suppliesDispensingAppMenu from "./menu-app-items/supply-dispensing-app-item/supply-dispensing.component";
 import reportBuilderAppMenu from "./menu-app-items/report-builder-item/report-builder-item.component";
 import runReportsMenu from "./menu-app-items/run-reports-item/run-reports-item.component";
+import billableServicesMenu from "./menu-app-items/billable-services-item/billable-services-item.component";
 import { createHomeDashboardLink } from "./create-dashboard-link";
 
 import ClinicalPatientSummary from "./pages/clinical-patient-summary/clinical-patient-summary.component";
@@ -52,6 +53,7 @@ export const bedManagementMenuItem = getSyncLifecycle(bedManagementAppMenu, opti
 export const suppliesDispensingMenuItem = getSyncLifecycle(suppliesDispensingAppMenu, options);
 export const reportBuilderAppMenuItem = getSyncLifecycle(reportBuilderAppMenu, options);
 export const runReportsMenuItem = getSyncLifecycle(runReportsMenu, options);
+export const billableServicesMenuItem = getSyncLifecycle(billableServicesMenu, options);
 
 export function startupApp() {
   defineConfigSchema(moduleName, configSchema);

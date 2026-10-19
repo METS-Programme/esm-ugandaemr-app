@@ -132,6 +132,14 @@
       }
     },
     {
+      "name": "billable-services-app-menu-item",
+      "component": "billableServicesMenuItem",
+      "slot": "app-menu-item-slot",
+      "meta": {
+        "name": "Billable Services"
+      }
+    },
+    {
       "name": "system-admin-dashboard-link",
       "component": "systemAdminDashboardLink",
       "slot": "system-admin-left-panel-slot",
