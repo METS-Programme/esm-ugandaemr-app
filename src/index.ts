@@ -17,6 +17,7 @@ import suppliesDispensingAppMenu from "./menu-app-items/supply-dispensing-app-it
 import reportBuilderAppMenu from "./menu-app-items/report-builder-item/report-builder-item.component";
 import runReportsMenu from "./menu-app-items/run-reports-item/run-reports-item.component";
 import billableServicesMenu from "./menu-app-items/billable-services-item/billable-services-item.component";
+import careModelsAdminMenu from "./menu-app-items/care-models-admin-item/care-models-admin-item.component";
 import { createHomeDashboardLink } from "./create-dashboard-link";
 
 import ClinicalPatientSummary from "./pages/clinical-patient-summary/clinical-patient-summary.component";
@@ -54,6 +55,7 @@ export const suppliesDispensingMenuItem = getSyncLifecycle(suppliesDispensingApp
 export const reportBuilderAppMenuItem = getSyncLifecycle(reportBuilderAppMenu, options);
 export const runReportsMenuItem = getSyncLifecycle(runReportsMenu, options);
 export const billableServicesMenuItem = getSyncLifecycle(billableServicesMenu, options);
+export const careModelsAdminMenuItem = getSyncLifecycle(careModelsAdminMenu, options);
 
 export function startupApp() {
   defineConfigSchema(moduleName, configSchema);
@@ -71,6 +73,14 @@ export const systemAdminPage = getAsyncLifecycle(
   () => import("./pages/system-admin/root.component"),
   {
     featureName: "system admin page",
+    moduleName,
+  },
+);
+
+export const careModelsAdminPage = getAsyncLifecycle(
+  () => import("./pages/care-models-admin/root.component"),
+  {
+    featureName: "care models admin page",
     moduleName,
   },
 );

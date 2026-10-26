@@ -1,0 +1,40 @@
+@use '@carbon/styles/scss/spacing';
+@use '@carbon/styles/scss/type';
+
+.container {
+  padding: spacing.$spacing-06;
+}
+
+.header {
+  margin-bottom: spacing.$spacing-06;
+
+  h2 {
+    @include type.type-style('heading-05');
+  }
+
+  p {
+    @include type.type-style('body-01');
+    color: var(--cds-text-secondary);
+  }
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: spacing.$spacing-10 spacing.$spacing-06;
+  border: 1px dashed var(--cds-border-subtle);
+  border-radius: spacing.$spacing-03;
+  text-align: center;
+
+  h3 {
+    @include type.type-style('heading-04');
+    margin: spacing.$spacing-05 0 spacing.$spacing-02;
+  }
+
+  p {
+    @include type.type-style('body-01');
+    color: var(--cds-text-secondary);
+  }
+}

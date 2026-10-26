@@ -8,6 +8,10 @@
     {
       "component": "systemAdminPage",
       "route": "system-admin"
+    },
+    {
+      "component": "careModelsAdminPage",
+      "route": "care-models-admin"
     }
   ],
   "extensions": [
@@ -137,6 +141,14 @@
       "slot": "app-menu-item-slot",
       "meta": {
         "name": "Billable Services"
+      }
+    },
+    {
+      "name": "care-models-admin-app-menu-item",
+      "component": "careModelsAdminMenuItem",
+      "slot": "app-menu-item-slot",
+      "meta": {
+        "name": "Care Models"
       }
     },
     {
