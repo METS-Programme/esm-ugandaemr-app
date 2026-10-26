@@ -8,10 +8,6 @@
     {
       "component": "systemAdminPage",
       "route": "system-admin"
-    },
-    {
-      "component": "careModelsAdminPage",
-      "route": "care-models-admin"
     }
   ],
   "extensions": [
@@ -54,102 +50,6 @@
     {
       "name": "assessment-section",
       "component": "AssessmentComponent"
-    },
-    {
-      "name": "bed-mgt-app-menu-item",
-      "component": "bedManagementMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Bed Management"
-      }
-    },
-    {
-      "name": "supply-dispensing-app-menu-item",
-      "component": "suppliesDispensingMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Supplies Dispensing"
-      }
-    },
-    {
-      "name": "form-builder-app-menu-item",
-      "component": "formBuilderAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Form Builder"
-      }
-    },
-    {
-      "name": "system-admin-app-menu-item",
-      "component": "systemAdminAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "System Admin"
-      }
-    },
-    {
-      "name": "legacy-admin-app-menu-item",
-      "component": "legacyAdminAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Legacy Admin"
-      }
-    },
-    {
-      "name": "cohort-builder-app-menu-item",
-      "component": "cohortBuilderAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Cohort Builder"
-      }
-    },
-    {
-      "name": "form-render-test-app-menu-item",
-      "component": "formRenderTestAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Form Render Test"
-      }
-    },
-    {
-      "name": "dispensing-app-menu-item",
-      "component": "dispensingAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Dispensing"
-      }
-    },
-    {
-      "name": "report-builder-app-menu-item",
-      "component": "reportBuilderAppMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Report Builder"
-      }
-    },
-    {
-      "name": "run-reports-menu-item",
-      "component": "runReportsMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Run Reports"
-      }
-    },
-    {
-      "name": "billable-services-app-menu-item",
-      "component": "billableServicesMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Billable Services"
-      }
-    },
-    {
-      "name": "care-models-admin-app-menu-item",
-      "component": "careModelsAdminMenuItem",
-      "slot": "app-menu-item-slot",
-      "meta": {
-        "name": "Care Models"
-      }
     },
     {
       "name": "system-admin-dashboard-link",

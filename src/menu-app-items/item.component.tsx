@@ -16,9 +16,10 @@ const Item: React.FC<ItemTileProps> = ({ title, icon: Icon, to, className, iconS
   const base =
     typeof window !== 'undefined' && typeof window.getOpenmrsSpaBase === 'function' ? window.getOpenmrsSpaBase() : '/';
   const finalHref = href ?? `${base}${to ?? ''}`;
+  const itemId = `menu-item-${title?.toLowerCase().replace(/\s+/g, '-') ?? 'untitled'}`;
 
   return (
-    <ClickableTile className={className} id="menu-item" href={`${finalHref}`}>
+    <ClickableTile className={className} id={itemId} href={`${finalHref}`}>
       <div className="customTileTitle">{<Icon size={iconSize} />}</div>
       <div>{title}</div>
     </ClickableTile>

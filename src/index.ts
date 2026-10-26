@@ -6,18 +6,6 @@ import {
 import { configSchema } from "./config-schema";
 import { moduleName } from "./constants";
 
-import formBuilderAppMenu from "./menu-app-items/form-builder-app-item/form-builder-app-item.component";
-import systemAdminAppMenu from "./menu-app-items/system-admin-item/system-admin-item.component";
-import legacyAdminAppMenu from "./menu-app-items/legacy-admin-item/legacy-admin-item.component";
-import cohortBuilderAppMenu from "./menu-app-items/cohort-builder-item/cohort-builder-item.component";
-import formRenderTestAppMenu from "./menu-app-items/form-render-test-item/form-render-test-item.component";
-import dispensingAppMenu from "./menu-app-items/despensing-app-menu-item/dispensing-app-menu-item.component";
-import bedManagementAppMenu from "./menu-app-items/bed-mgt-item/bed-mgt.component";
-import suppliesDispensingAppMenu from "./menu-app-items/supply-dispensing-app-item/supply-dispensing.component";
-import reportBuilderAppMenu from "./menu-app-items/report-builder-item/report-builder-item.component";
-import runReportsMenu from "./menu-app-items/run-reports-item/run-reports-item.component";
-import billableServicesMenu from "./menu-app-items/billable-services-item/billable-services-item.component";
-import careModelsAdminMenu from "./menu-app-items/care-models-admin-item/care-models-admin-item.component";
 import { createHomeDashboardLink } from "./create-dashboard-link";
 
 import ClinicalPatientSummary from "./pages/clinical-patient-summary/clinical-patient-summary.component";
@@ -44,19 +32,6 @@ const options = {
   moduleName,
 };
 
-export const formBuilderAppMenuItem = getSyncLifecycle(formBuilderAppMenu, options);
-export const systemAdminAppMenuItem = getSyncLifecycle(systemAdminAppMenu, options);
-export const legacyAdminAppMenuItem = getSyncLifecycle(legacyAdminAppMenu, options);
-export const cohortBuilderAppMenuItem = getSyncLifecycle(cohortBuilderAppMenu, options);
-export const formRenderTestAppMenuItem = getSyncLifecycle(formRenderTestAppMenu, options);
-export const dispensingAppMenuItem = getSyncLifecycle(dispensingAppMenu, options);
-export const bedManagementMenuItem = getSyncLifecycle(bedManagementAppMenu, options);
-export const suppliesDispensingMenuItem = getSyncLifecycle(suppliesDispensingAppMenu, options);
-export const reportBuilderAppMenuItem = getSyncLifecycle(reportBuilderAppMenu, options);
-export const runReportsMenuItem = getSyncLifecycle(runReportsMenu, options);
-export const billableServicesMenuItem = getSyncLifecycle(billableServicesMenu, options);
-export const careModelsAdminMenuItem = getSyncLifecycle(careModelsAdminMenu, options);
-
 export function startupApp() {
   defineConfigSchema(moduleName, configSchema);
 
@@ -73,14 +48,6 @@ export const systemAdminPage = getAsyncLifecycle(
   () => import("./pages/system-admin/root.component"),
   {
     featureName: "system admin page",
-    moduleName,
-  },
-);
-
-export const careModelsAdminPage = getAsyncLifecycle(
-  () => import("./pages/care-models-admin/root.component"),
-  {
-    featureName: "care models admin page",
     moduleName,
   },
 );
