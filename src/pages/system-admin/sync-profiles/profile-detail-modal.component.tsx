@@ -86,6 +86,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
     syncLimit: 50,
     searchable: false,
     searchURL: '',
+    customTaskClass: '',
   });
 
   const [isTesting, setIsTesting] = useState(false);
@@ -261,6 +262,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
         syncLimit: profile.syncLimit ?? 50,
         searchable: profile.searchable ?? false,
         searchURL: profile.searchURL || '',
+        customTaskClass: profile.customTaskClass || '',
       });
 
       // Load concept details for existing codes
@@ -292,6 +294,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
         syncLimit: 50,
         searchable: false,
         searchURL: '',
+        customTaskClass: '',
       });
     }
     setTestResult(null);
@@ -497,6 +500,9 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
         dataToSyncStartDate: formData.syncDataEverSince ? formattedStartDate : null,
         searchable: formData.searchable,
         searchURL: formData.searchURL,
+        // Empty/null = profile is executed by the generic scheduler task;
+        // otherwise this is the fully qualified class name of the dedicated task
+        customTaskClass: formData.customTaskClass || null,
       };
 
       if (profile?.uuid) {
@@ -601,13 +607,13 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                       id="profile-enabled"
                       labelText={t('enableProfile', 'Enable Profile')}
                       checked={formData.profileEnabled}
-                      onChange={(value) => handleChange('profileEnabled', value)}
+                      onChange={(_, { checked }) => handleChange('profileEnabled', checked)}
                     />
                     <Checkbox
                       id="generate-bundle"
                       labelText={t('generateBundle', 'Generate Bundle')}
                       checked={formData.generateBundle}
-                      onChange={(value) => handleChange('generateBundle', value)}
+                      onChange={(_, { checked }) => handleChange('generateBundle', checked)}
                     />
                   </div>
 
@@ -616,7 +622,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                       id="sync-historical"
                       labelText={t('syncHistoricalData', 'Sync Historical Data')}
                       checked={formData.syncDataEverSince}
-                      onChange={(value) => handleChange('syncDataEverSince', value)}
+                      onChange={(_, { checked }) => handleChange('syncDataEverSince', checked)}
                     />
                   </div>
 
@@ -643,7 +649,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                     id="resources-in-bundle"
                     label={t('noOfResourcesInBundle', 'No of Resources in Bundle')}
                     value={formData.numberOfResourcesInBundle}
-                    onChange={(e) => handleChange('numberOfResourcesInBundle', parseInt((e.target as HTMLInputElement).value) || 50)}
+                    onChange={(_, state) => handleChange('numberOfResourcesInBundle', Number(state.value) || 50)}
                     min={1}
                     max={1000}
                     className={styles.formField}
@@ -653,7 +659,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                     id="duration-keep-resources"
                     label={t('durationToKeepSyncedResources', 'Duration To Keep Synced Resources (Days)')}
                     value={formData.durationToKeepSyncedResources}
-                    onChange={(e) => handleChange('durationToKeepSyncedResources', parseInt((e.target as HTMLInputElement).value) || 7)}
+                    onChange={(_, state) => handleChange('durationToKeepSyncedResources', Number(state.value) || 7)}
                     min={1}
                     max={365}
                     className={styles.formField}
@@ -685,7 +691,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                     id="is-case-based"
                     labelText={t('isProfileCaseBased', 'Is Profile Case Based')}
                     checked={formData.isCaseBasedProfile}
-                    onChange={(value) => handleChange('isCaseBasedProfile', value)}
+                    onChange={(_, { checked }) => handleChange('isCaseBasedProfile', checked)}
                     className={styles.formField}
                   />
 
@@ -852,7 +858,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                     id="sync-limit"
                     label={t('numberOfResourcesToSync', 'Number of Resources to Sync at a time')}
                     value={formData.syncLimit}
-                    onChange={(e) => handleChange('syncLimit', parseInt((e.target as HTMLInputElement).value) || 50)}
+                    onChange={(_, state) => handleChange('syncLimit', Number(state.value) || 50)}
                     min={1}
                     max={1000}
                     className={styles.formField}
@@ -890,7 +896,7 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                     id="searchable"
                     labelText={t('isProfileSearchable', 'Is Profile Searchable')}
                     checked={formData.searchable}
-                    onChange={(value) => handleChange('searchable', value)}
+                    onChange={(_, { checked }) => handleChange('searchable', checked)}
                     className={styles.formField}
                   />
 
@@ -904,6 +910,19 @@ const ProfileDetailModal: React.FC<ProfileDetailModalProps> = ({
                       className={styles.formField}
                     />
                   )}
+
+                  <TextInput
+                    id="task-class"
+                    labelText={t('taskClass', 'Task Class')}
+                    placeholder={t('taskClassPlaceholder', 'e.g. org.openmrs.module.ugandaemrsync.tasks.TBDataTask')}
+                    helperText={t(
+                      'taskClassHelperText',
+                      'Fully qualified class of the task that runs this profile. Leave empty to use the generic FHIR scheduler task.',
+                    )}
+                    value={formData.customTaskClass}
+                    onChange={(e) => handleChange('customTaskClass', e.target.value)}
+                    className={styles.formField}
+                  />
 
                   {profile?.uuid && (
                     <Button

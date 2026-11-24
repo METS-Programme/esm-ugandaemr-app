@@ -213,6 +213,10 @@ export interface ResourceSearchParameter {
   servicerequestFilter?: ClinicalResourceFilter;
 }
 
+// Fully qualified class name of the task that executes this profile.
+// Empty/absent means the profile is run by the generic scheduler task
+// (org.openmrs.module.ugandaemrsync.tasks.GenericFhirProfileSchedulerTask);
+// e.g. org.openmrs.module.ugandaemrsync.tasks.TBDataTask for a dedicated task.
 export interface SyncFhirProfile {
   uuid: string;
   name: string;
@@ -240,6 +244,7 @@ export interface SyncFhirProfile {
   syncLimit?: number;
   searchable?: boolean;
   searchURL?: string;
+  customTaskClass?: string;
 }
 
 export interface SyncProfileFormData {
@@ -266,6 +271,7 @@ export interface SyncProfileFormData {
   syncLimit?: number;
   searchable?: boolean;
   searchURL?: string;
+  customTaskClass?: string;
 }
 
 export interface SyncProfileResponse {
